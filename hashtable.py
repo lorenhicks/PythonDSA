@@ -19,3 +19,9 @@ add('Jones')
 add('Lisa')
 add('Siri')
 print(my_list)
+
+def contains(name):
+    index = hash_function(name)
+    return my_list[index] == name
+
+print(" 'Pete' is in the Hash Table:", contains('Pete'))
