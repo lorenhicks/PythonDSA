@@ -1,0 +1,1 @@
+my_list = [None, None, None, None, None, None, None, None, None, None]
