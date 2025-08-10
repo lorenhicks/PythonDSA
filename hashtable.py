@@ -14,4 +14,8 @@ def add(name):
     my_list[index] = name
 
 add('Bob')
+add('Pete')
+add('Jones')
+add('Lisa')
+add('Siri')
 print(my_list)
