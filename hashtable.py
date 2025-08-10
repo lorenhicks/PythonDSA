@@ -8,3 +8,10 @@ def hash_function(value):
     return sum_of_chars % 10
 
 print(" 'Bob' has hash code:", hash_function('Bob'))
+
+def add(name):
+    index = hash_function(name)
+    my_list[index] = name
+
+add('Bob')
+print(my_list)
