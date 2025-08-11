@@ -4,15 +4,22 @@ class TreeNode:
         self.left = None
         self.right = None
 
-def search(node, target):
+def insert(node, data):
     if node is None:
-        return None
-    elif node.data == target:
-        return node
-    elif target < node.data:
-        return search(node.left, target)
+        return TreeNode(data)
     else:
-        return search(node.left, target)
+        if data < node.data:
+            node.left = insert(node.left, data)
+        elif data > node.data:
+            node.right = insert(node.right, data)
+    return node
+
+def inOrderTraversal(node):
+  if node is None:
+    return
+  inOrderTraversal(node.left)
+  print(node.data, end=", ")
+  inOrderTraversal(node.right)
     
 root = TreeNode(13)
 node7 = TreeNode(7)
@@ -34,8 +41,5 @@ node15.right = node19
 
 node19.left = node18
 
-result = search(root, 13)
-if result:
-    print(f"Found the node with value: {result.data}")
-else:
-    print("Value not found in the BST")
+insert(root, 10)
+inOrderTraversal(root)
