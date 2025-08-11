@@ -20,6 +20,12 @@ def inOrderTraversal(node):
   inOrderTraversal(node.left)
   print(node.data, end=", ")
   inOrderTraversal(node.right)
+
+def minValueNode(node):
+    current = node
+    while current.left is not None:
+        current = current.left
+    return current
     
 root = TreeNode(13)
 node7 = TreeNode(7)
@@ -41,5 +47,6 @@ node15.right = node19
 
 node19.left = node18
 
-insert(root, 10)
 inOrderTraversal(root)
+
+print("\nLowest value:", minValueNode(root).data)
