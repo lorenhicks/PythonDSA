@@ -4,16 +4,6 @@ class TreeNode:
         self.left = None
         self.right = None
 
-def insert(node, data):
-    if node is None:
-        return TreeNode(data)
-    else:
-        if data < node.data:
-            node.left = insert(node.left, data)
-        elif data > node.data:
-            node.right = insert(node.right, data)
-    return node
-
 def inOrderTraversal(node):
   if node is None:
     return
@@ -26,6 +16,29 @@ def minValueNode(node):
     while current.left is not None:
         current = current.left
     return current
+
+def delete(node, data):
+   if not node:
+      return None
+   
+   if data < node.data:
+      node.left = delete(node.left, data)
+   elif data > node.data:
+      node.right = delete(node.right, data)
+   else:
+      if not node.left:
+         temp = node.right
+         node = None
+         return temp
+      elif not node.right:
+         temp = node.left
+         node = None
+         return temp
+      
+      node.data = minValueNode(node.right).data
+      node.right = delete(node.right, node.data)
+
+   return node
     
 root = TreeNode(13)
 node7 = TreeNode(7)
@@ -48,5 +61,7 @@ node15.right = node19
 node19.left = node18
 
 inOrderTraversal(root)
+delete(root, 15)
 
-print("\nLowest value:", minValueNode(root).data)
+print()
+inOrderTraversal(root)
