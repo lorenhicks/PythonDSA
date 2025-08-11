@@ -4,12 +4,12 @@ class TreeNode:
     self.left = None
     self.right = None
 
-def inOrderTraversal(node):
+def postOrderTraversal(node):
   if node is None:
     return
-  inOrderTraversal(node.left)
-  print(node.data, end =", ")
-  inOrderTraversal(node.right)
+  postOrderTraversal(node.left)
+  postOrderTraversal(node.right)
+  print(node.data, end=", ")
 
 root = TreeNode('R')
 nodeA = TreeNode('A')
@@ -31,4 +31,4 @@ nodeB.right = nodeF
 
 nodeF.left = nodeG
 
-inOrderTraversal(root)
+postOrderTraversal(root)
